@@ -1,0 +1,148 @@
+/* HomePage.css */
+.home-page {
+    font-family: Arial, sans-serif;
+    padding: 0px 0px;
+    /* max-width: 600px; */
+    /* margin: 0 auto; */
+  }
+
+  
+  /* Task List */
+  .task-list {
+    margin-bottom: 20px;
+  }
+  
+  .task-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .hidden-checkbox {
+    display: none;
+  }
+  
+  .checkbox {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid green;
+    border-radius: 4px;
+    cursor: pointer;
+    position: relative;
+}
+
+.checkbox:checked {
+    background-color: green;
+    border-color: green;
+}
+
+.checkbox:checked::after {
+    content: '✔';
+    color: white;
+    font-size: 16px;
+    position: absolute;
+    left: 3px;
+    top: -2px;
+}
+
+  
+  
+  .task-item input[type="checkbox"] {
+    margin-right: 10px;
+  }
+  
+  .task-item .task-title {
+    flex-grow: 1;
+    margin-right: 10px;
+  }
+  
+  .task-item .task-category {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .task-item .task-actions button {
+    margin-left: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  /* Filter */
+  .filter {
+    margin-bottom: 20px;
+  }
+  
+  .filter select {
+    padding: 5px;
+    font-size: 14px;
+  }
+  
+  /* New Task Button */
+  .new-task-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #5F33E1;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .new-task-button:hover {
+    background-color: #291DD8;
+  }
+  
+  /* Completed Section */
+  .completed-section {
+    margin-top: 20px;
+  }
+  
+  .completed-section h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  /* Dark Mode */
+  .home-page.dark-mode {
+    background-color: #0A013D;
+    color: #fff;
+  }
+  
+  .dark-mode .header h1 {
+    color: #fff;
+  }
+  
+  .dark-mode .task-item .task-category {
+    color: #bbb;
+  }
+  
+  /* .dark-mode .task-item input[type="checkbox"] {
+    accent-color: #007bff;
+  } */
+  
+  /* .dark-mode .new-task-button {
+    background-color: #0056b3;
+  }
+  
+  .dark-mode .new-task-button:hover {
+    background-color: #003d80;
+  } */
+
+  @media (max-width: 600px) {
+    .home-page {
+      padding: 10px;
+    }
+  
+    .header h1 {
+      font-size: 20px;
+    }
+  
+    .new-task-button {
+      font-size: 14px;
+    }
+  }
