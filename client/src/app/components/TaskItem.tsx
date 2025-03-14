@@ -1,47 +1,44 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { TaskI } from "../types/TaskInterface";
 import { useNavigate } from "react-router-dom";
 import { getIconPath } from "../utils/icons";
-import useTasks from "../hooks/useTasks";
+import Checkbox from "./Checkbox";
 
 interface TaskItemProps {
   task: TaskI;
+  deleteTask: (id: number) => void;
+  updateTask: (task: TaskI) => void
 }
 
-const TaskItem: React.FC<TaskItemProps> = ({ task }) => {
-  const { deleteTask, updateTask } = useTasks(); 
+const TaskItem: React.FC<TaskItemProps> = ({ task, deleteTask, updateTask }) => {
   const navigate = useNavigate();
 
-  const handleToggleComplete = () => {
+  const handleToggleComplete = useCallback(() => {
     updateTask({ ...task, completed: !task.completed });
-  };
+  }, [task, updateTask]);
 
-  const handleEdit = () => {
-    navigate(`/task/${task.id}`);
-  };
+  const handleEdit = () => navigate(`/task/${task.id}`);
+
+  const handleDelete = () => deleteTask(task.id)
+
 
   return (
     <div className="task-item">
-      <label className="checkbox-label">
-        <input
-          type="checkbox"
-          checked={task.completed}
-          onChange={handleToggleComplete}
-          className="hidden-checkbox"
-        />
-        <img src={getIconPath(task.completed ? "checked" : "noChecked")} alt="Checkbox" width={16} height={16} />
-      </label>
-
-      <img src={getIconPath(task.category)} alt={task.category} className="category-icon" />
-
       <div className="task-details">
-        <span className={`task-title ${task.completed ? "completed" : ""}`}>{task.title}</span>
-        <span className="task-category">{task.category}</span>
+        <Checkbox checked={task.completed} onChange={handleToggleComplete} />
+
+        <img src={getIconPath(task.category)} alt={task.category} className="category-icon" />
+
+        <div className="task-text">
+          <span className="task-category">{task.category}</span>
+          <span className={`task-title `}>{task.title}</span>
+        </div>
       </div>
+
 
       <div className="task-actions">
         <button onClick={handleEdit} className="edit-btn">Edit</button>
-        <button onClick={() => deleteTask(task.id)} className="delete-btn">Delete</button>
+        <button onClick={handleDelete} className="delete-btn">Delete</button>
       </div>
     </div>
   );

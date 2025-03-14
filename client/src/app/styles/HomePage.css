@@ -1,84 +1,78 @@
 /* HomePage.css */
 .home-page {
     font-family: Arial, sans-serif;
-    padding: 0px 0px;
-    /* max-width: 600px; */
-    /* margin: 0 auto; */
+padding-top: 28px;
+gap: 20px;
+
   }
 
+  .title-filter {
+    display: flex;
+    justify-content: space-between;
+
+  }
   
-  /* Task List */
+  
+  
+  .progress {
+display: flex;
+gap: 10px;
+
+  }
+  .in-progress {
+    width: 87px;
+height: 19px;
+font-family: Inter;
+font-weight: 600;
+font-size: 16px;
+line-height: 100%;
+letter-spacing: 0%;
+
+
+  }
+  .count {
+    width: 10;
+height: 19;
+font-family: Inter;
+font-weight: 600;
+font-size: 16px;
+line-height: 100%;
+letter-spacing: 0%;
+color: #5F33E1;
+
+  }
+
   .task-list {
-    margin-bottom: 20px;
+    /* padding-top: 28px; */
+    gap: 8px;
   }
   
   .task-item {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    margin-bottom: 10px;
+    padding: 8px 12px;
+    border-radius: 12px;
+    box-shadow: 0px 1px 6px 0px rgba(0, 0, 0, 0.12);
   }
 
-  .hidden-checkbox {
-    display: none;
+  .task-details {
+    display: flex;
+    align-items: center;
+    gap: 8px;
   }
   
-  .checkbox {
-    appearance: none;
-    width: 20px;
-    height: 20px;
-    border: 2px solid green;
-    border-radius: 4px;
-    cursor: pointer;
-    position: relative;
+
+.task-text {
+  display: flex;
+      flex-direction: column;
+      gap: 4px;
 }
 
-.checkbox:checked {
-    background-color: green;
-    border-color: green;
-}
 
-.checkbox:checked::after {
-    content: '✔';
-    color: white;
-    font-size: 16px;
-    position: absolute;
-    left: 3px;
-    top: -2px;
-}
-
-  
-  
-  .task-item input[type="checkbox"] {
-    margin-right: 10px;
-  }
-  
-  .task-item .task-title {
-    flex-grow: 1;
-    margin-right: 10px;
-  }
-  
-  .task-item .task-category {
-    font-size: 14px;
-    color: #666;
-  }
-  
-  .task-item .task-actions button {
-    margin-left: 10px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 14px;
-  }
   
   /* Filter */
-  .filter {
-    margin-bottom: 20px;
-  }
-  
-  .filter select {
-    padding: 5px;
-    font-size: 14px;
-  }
+ 
   
   /* New Task Button */
   .new-task-button {
@@ -106,32 +100,11 @@
     font-size: 18px;
     margin-bottom: 10px;
   }
-  
-  /* Dark Mode */
-  .home-page.dark-mode {
-    background-color: #0A013D;
-    color: #fff;
+
+  [data-theme="dark"] .task-item {
+    background-color: #342F65;
   }
   
-  .dark-mode .header h1 {
-    color: #fff;
-  }
-  
-  .dark-mode .task-item .task-category {
-    color: #bbb;
-  }
-  
-  /* .dark-mode .task-item input[type="checkbox"] {
-    accent-color: #007bff;
-  } */
-  
-  /* .dark-mode .new-task-button {
-    background-color: #0056b3;
-  }
-  
-  .dark-mode .new-task-button:hover {
-    background-color: #003d80;
-  } */
 
   @media (max-width: 600px) {
     .home-page {
