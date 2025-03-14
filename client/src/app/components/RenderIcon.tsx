@@ -5,6 +5,6 @@ interface RenderIconProps {
 
 const RenderIcon: React.FC<RenderIconProps> = ({iconName, className}) => {
     const getIconPath = `/icons/icontype=${iconName}.png`;
-    return <img className={className} src={getIconPath}/>
+    return <img className={className} src={getIconPath} alt=""/>
 }
 export default RenderIcon

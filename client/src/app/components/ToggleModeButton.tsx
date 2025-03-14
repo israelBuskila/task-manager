@@ -1,5 +1,6 @@
 import { useTheme } from "../hooks/useTheme";
 import RenderIcon from "./RenderIcon";
+import '../styles/ToggleModeButton.css'
 
 const ToggleModeButton: React.FC = () => {
     const { toggleTheme } = useTheme();

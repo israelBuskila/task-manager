@@ -1,5 +1,7 @@
 /* HomePage.css */
-.home-page {
+.tasks {
+  display: flex;
+  flex-direction: column;
     font-family: Arial, sans-serif;
 padding-top: 28px;
 gap: 20px;
@@ -17,6 +19,7 @@ gap: 20px;
   .progress {
 display: flex;
 gap: 10px;
+align-items: center;
 
   }
   .in-progress {
@@ -42,33 +45,14 @@ color: #5F33E1;
 
   }
 
-  .task-list {
+  .task-group{
+    display: flex;
+    flex-direction: column;
     /* padding-top: 28px; */
     gap: 8px;
   }
   
-  .task-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 8px 12px;
-    border-radius: 12px;
-    box-shadow: 0px 1px 6px 0px rgba(0, 0, 0, 0.12);
-  }
-
-  .task-details {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  
-
-.task-text {
-  display: flex;
-      flex-direction: column;
-      gap: 4px;
-}
-
+ 
 
   
   /* Filter */

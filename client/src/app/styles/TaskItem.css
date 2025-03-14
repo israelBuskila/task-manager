@@ -1,0 +1,89 @@
+
+.hover:hover {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    overflow: hidden;
+
+}
+
+.task {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--bg-secondary-color);
+    width: 100%;
+    padding: 8px 12px;
+    border-radius: 12px;
+    box-shadow: 0px 1px 6px 0px rgba(0, 0, 0, 0.12);
+    transition: transform 0.3s ease, width 0.3s ease;
+
+  }
+
+  .task {
+    transform: translateX(-30px);
+    transition: transform 0.3s ease;
+  }
+
+  .edit-delete {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+
+  }
+
+  button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+  .edit-icon {
+
+    filter: brightness(0) saturate(100%) invert(21%) sepia(81%) 
+            saturate(739%) hue-rotate(238deg) brightness(91%) contrast(96%);
+    transition: transform 0.2s ease;
+  }
+
+  .delete-icon {
+ 
+    filter: brightness(0) saturate(100%) invert(21%) sepia(81%) 
+            saturate(739%) hue-rotate(238deg) brightness(91%) contrast(96%);
+    transition: transform 0.2s ease;
+  }
+
+  .hover:hover .task {
+    transform: translateX(-50px); /* Move left */
+    width: calc(100% - 50px); /* Shrink */
+  }
+
+  .hover:hover .edit-delete {
+    opacity: 1;
+
+  }
+
+
+  .task-info {
+    display: flex;
+    align-items: center;
+     gap: 8px; 
+  }
+  
+
+.info {
+  display: flex;
+      flex-direction: column;
+      gap: 4px;
+}
+
+

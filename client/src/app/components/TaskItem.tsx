@@ -3,6 +3,9 @@ import { TaskI } from "../types/TaskInterface";
 import { useNavigate } from "react-router-dom";
 import { getIconPath } from "../utils/icons";
 import Checkbox from "./Checkbox";
+import '../styles/TaskItem.css'
+import ProgressRing from "./ProgressRing";
+import RenderIcon from "./RenderIcon";
 
 interface TaskItemProps {
   task: TaskI;
@@ -23,23 +26,33 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, deleteTask, updateTask }) => 
 
 
   return (
-    <div className="task-item">
-      <div className="task-details">
+    <div className="hover">
+    <div className="task">
+      <div className="task-info">
         <Checkbox checked={task.completed} onChange={handleToggleComplete} />
 
         <img src={getIconPath(task.category)} alt={task.category} className="category-icon" />
 
-        <div className="task-text">
+        <div className="info">
           <span className="task-category">{task.category}</span>
           <span className={`task-title `}>{task.title}</span>
         </div>
       </div>
-
-
-      <div className="task-actions">
-        <button onClick={handleEdit} className="edit-btn">Edit</button>
-        <button onClick={handleDelete} className="delete-btn">Delete</button>
+      <div className="progress">
+        <ProgressRing progress={23}/>
       </div>
+      </div>
+
+
+      <div className="edit-delete">
+        <button onClick={handleEdit} className="edit-btn">
+          <RenderIcon className="edit-icon" iconName="edit"/>
+        </button>
+        <button onClick={handleDelete} className="delete-btn">
+          <RenderIcon className="delete-icon" iconName="delete"/>
+        </button>
+      </div>
+   
     </div>
   );
 };

@@ -1,0 +1,41 @@
+.toggle-mode {
+    background: #5F33E1;
+    border: none;
+    border-radius: 8px;
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    justify-content: center;
+    overflow: hidden;
+    gap: 8px;
+}
+
+.toggle-mode img {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.5s ease-in-out, filter 0.3s ease-in-out;
+}
+
+/* Default Light Mode: Sun First, Moon Second */
+.sun {
+    transform: translateX(0);
+    filter: brightness(0) saturate(100%) invert(83%) sepia(54%) saturate(874%) hue-rotate(358deg) brightness(103%) contrast(105%);
+}
+
+.moon {
+    transform: translateX(0);
+    filter: brightness(0) invert(1);
+}
+
+/* Dark Mode - Moon First, Sun Second */
+[data-theme="dark"] .sun {
+    transform: translateX(30px);
+    filter: brightness(0) invert(1);
+}
+
+[data-theme="dark"] .moon {
+    transform: translateX(-30px);
+    filter: brightness(0) saturate(100%) invert(83%) sepia(54%) saturate(874%) hue-rotate(358deg) brightness(103%) contrast(105%);
+}
