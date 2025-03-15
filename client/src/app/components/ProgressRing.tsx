@@ -1,7 +1,12 @@
 import React from "react";
 import '../styles/ProgressRing.css'
 
-const ProgressRing: React.FC<{ progress: number }> = ({ progress }) => {
+interface ProgressRingProps {
+    progress: number;
+    color?: string; // Optional color prop
+}
+
+const ProgressRing: React.FC<ProgressRingProps> = ({ progress, color = "#A0AEC0" }) => {
     const radius = 45;
     const circumference = 2 * Math.PI * radius;
     const strokeDashoffset = circumference - (progress / 100) * circumference;
@@ -15,7 +20,10 @@ const ProgressRing: React.FC<{ progress: number }> = ({ progress }) => {
                     cx="50"
                     cy="50"
                     r={radius}
-                    style={{ strokeDashoffset }}
+                    style={{ 
+                        strokeDashoffset, 
+                        stroke: color // Apply dynamic color 
+                    }}
                 ></circle>
             </svg>
             <span className="progress-text">{progress}%</span>

@@ -39,14 +39,11 @@
     align-items: center;
     padding: 8px 12px;
     gap: 8px;
-    font-size: 14px;
     cursor: pointer;
 
 }
 
 .dropdown-item input {
-    width: 16px;
-    height: 16px;
     cursor: pointer;
 }
 

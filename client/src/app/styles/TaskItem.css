@@ -1,11 +1,7 @@
-
-.hover:hover {
-    position: relative;
+.hover {
     display: flex;
     align-items: center;
-    width: 100%;
-    overflow: hidden;
-
+    position: relative; 
 }
 
 .task {
@@ -16,27 +12,21 @@
     width: 100%;
     padding: 8px 12px;
     border-radius: 12px;
-    box-shadow: 0px 1px 6px 0px rgba(0, 0, 0, 0.12);
-    transition: transform 0.3s ease, width 0.3s ease;
+    box-shadow: 0px 1px 6px 0px var(--shadow-color);
+    transition: width 0.3s ease;
+    cursor: pointer;
+}
 
-  }
-
-  .task {
-    transform: translateX(-30px);
-    transition: transform 0.3s ease;
-  }
-
-  .edit-delete {
+.edit-delete {
     position: absolute;
-    display: flex;
-    flex-direction: column;
     gap: 20px;
+    right: 0;
     opacity: 0;
-    transition: opacity 0.3s ease;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
 
-  }
-
-  button {
+button {
     background: none;
     border: none;
     cursor: pointer;
@@ -48,42 +38,33 @@
     transition: all 0.3s ease;
 }
 
-  .edit-icon {
-
-    filter: brightness(0) saturate(100%) invert(21%) sepia(81%) 
-            saturate(739%) hue-rotate(238deg) brightness(91%) contrast(96%);
+.edit-icon, .delete-icon {
+    filter: brightness(0) saturate(100%) invert(34%) sepia(84%) saturate(747%) hue-rotate(240deg) brightness(92%) contrast(95%);
     transition: transform 0.2s ease;
-  }
-
-  .delete-icon {
- 
-    filter: brightness(0) saturate(100%) invert(21%) sepia(81%) 
-            saturate(739%) hue-rotate(238deg) brightness(91%) contrast(96%);
-    transition: transform 0.2s ease;
-  }
-
-  .hover:hover .task {
-    transform: translateX(-50px); /* Move left */
-    width: calc(100% - 50px); /* Shrink */
-  }
-
-  .hover:hover .edit-delete {
-    opacity: 1;
-
-  }
-
-
-  .task-info {
-    display: flex;
-    align-items: center;
-     gap: 8px; 
-  }
-  
-
-.info {
-  display: flex;
-      flex-direction: column;
-      gap: 4px;
 }
 
+.hover:hover .task {
+    width: calc(100% - 5%);
+}
 
+.hover:hover .edit-delete {
+    opacity: 1;
+    visibility: visible;
+}
+
+.hover:hover .progress-ring {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.task-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}

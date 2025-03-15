@@ -4,6 +4,7 @@
     --bg-secondary-color: #ffffff;
     --text-color: #222222;
     --primary-color: #4f46e5;
+    --shadow-color: rgba(0, 0, 0, 0.12); 
   }
   
   /* Dark Mode */
@@ -12,6 +13,7 @@
     --bg-secondary-color: #342F65;
     --text-color: #ffffff;
     --primary-color: #6366f1;
+    --shadow-color: rgba(99, 102, 241, 0.4); 
   }
   
   body {

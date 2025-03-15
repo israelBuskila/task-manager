@@ -55,8 +55,7 @@ color: #5F33E1;
  
 
   
-  /* Filter */
- 
+  
   
   /* New Task Button */
   .new-task-button {
@@ -69,6 +68,8 @@ color: #5F33E1;
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
+    margin-top: 28px;
+    margin-bottom: 28px;
   }
   
   .new-task-button:hover {
@@ -88,6 +89,7 @@ color: #5F33E1;
   [data-theme="dark"] .task-item {
     background-color: #342F65;
   }
+  
   
 
   @media (max-width: 600px) {

@@ -4,6 +4,7 @@ export interface TaskI {
     title: string,
     category: CategoryI,
     completed: boolean,
+    progress: number
 }
 
 export type CategoryI = 'Work' | 'Personal' | 'Shop' | 'Pets'| 'Self Care';

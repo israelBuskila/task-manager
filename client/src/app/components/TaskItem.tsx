@@ -1,11 +1,12 @@
 import React, { useCallback } from "react";
 import { TaskI } from "../types/TaskInterface";
 import { useNavigate } from "react-router-dom";
-import { getIconPath } from "../utils/icons";
 import Checkbox from "./Checkbox";
 import '../styles/TaskItem.css'
 import ProgressRing from "./ProgressRing";
+import { IconEdit, IconTrash } from "@tabler/icons-react";
 import RenderIcon from "./RenderIcon";
+import { CATEGORY_OPTIONS } from "../constants/categoryOptions";
 
 interface TaskItemProps {
   task: TaskI;
@@ -31,25 +32,23 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, deleteTask, updateTask }) => 
       <div className="task-info">
         <Checkbox checked={task.completed} onChange={handleToggleComplete} />
 
-        <img src={getIconPath(task.category)} alt={task.category} className="category-icon" />
+        <RenderIcon iconName={task.category} className="category-icon" backgroundColor={CATEGORY_OPTIONS[task.category].backgroundColor}/>
 
         <div className="info">
           <span className="task-category">{task.category}</span>
           <span className={`task-title `}>{task.title}</span>
         </div>
       </div>
-      <div className="progress">
-        <ProgressRing progress={23}/>
-      </div>
+        <ProgressRing progress={task.progress} color={CATEGORY_OPTIONS[task.category].color}/>
       </div>
 
 
       <div className="edit-delete">
         <button onClick={handleEdit} className="edit-btn">
-          <RenderIcon className="edit-icon" iconName="edit"/>
+        <IconEdit size={24} stroke={2} color="#5F33E1" />
         </button>
         <button onClick={handleDelete} className="delete-btn">
-          <RenderIcon className="delete-icon" iconName="delete"/>
+        <IconTrash size={24} stroke={2} color="#5F33E1" />
         </button>
       </div>
    
