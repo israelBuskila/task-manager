@@ -1,0 +1,56 @@
+.button {
+    font-size: 16px;
+    font-weight: bold;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+    width: 100%;
+    border: none;
+    width: fit-content;
+  }
+
+  .full-width {
+    width: 100%;
+  }
+  
+  .primary {
+    background-color: #5F33E1;
+    color: white;
+  }
+  
+  .primary:hover {
+    background-color: #4a14cc;
+  }
+  
+  .primary-outline {
+    background-color: white;
+    color: #5b18ff;
+    border: 2px solid #5b18ff;
+  }
+  
+  .primary-outline:hover {
+    background-color: #f0e6ff;
+  }
+  
+  .secondary {
+    border: 1px solid #5F33E1;
+    background-color: transparent;
+    color: var(--text-color);
+  }
+  
+  .secondary:hover {
+    background-color: #2a0088;
+  }
+  
+  .secondary-outline {
+    background-color: white;
+    color: #3500aa;
+    border: 2px solid #3500aa;
+  }
+  
+  .secondary-outline:hover {
+    background-color: #f0e6ff;
+  }
+  
