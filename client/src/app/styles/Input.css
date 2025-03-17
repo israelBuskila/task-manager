@@ -1,0 +1,67 @@
+/* Default Input Container */
+.input-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 4px;
+  }
+  
+  /* Label */
+  .input-label {
+    font-size: 14px;
+    color: #6b7280;
+  }
+  
+  /* Input Wrapper */
+  .input-wrapper {
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+    /* padding: 8px 12px; */
+    background-color: var(--bg-secondary-color);
+    transition: border-color 0.2s ease-in-out;
+    box-shadow: 0px 1px 6px 0px var(--shadow-color); 
+
+  }
+  
+  /* Input Field */
+  .input-field {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    color: var(--text-color);
+    background: transparent;
+    padding: 12px;
+  }
+  
+  /* Clear Button */
+  .clear-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: #aaa;
+    padding: 4px;
+  }
+  
+  .clear-button:hover {
+    color: #555;
+  }
+  
+  /* Focused Input */
+  .input-container.focused .input-wrapper {
+    border-color: #6c3de2;
+  }
+  
+  /* Error State */
+  .input-container.error .input-wrapper {
+    border-color: #e63946;
+  }
+  
+  .input-container.error .error-text {
+    color: #e63946;
+    font-size: 12px;
+    margin-top: 4px;
+  }
+  
