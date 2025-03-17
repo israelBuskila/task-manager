@@ -2,8 +2,8 @@
 .tasks {
   display: flex;
   flex-direction: column;
-    font-family: Arial, sans-serif;
-padding-top: 28px;
+  font-family: Inter;
+  padding-top: 28px;
 gap: 20px;
 
   }
@@ -54,7 +54,9 @@ color: #5F33E1;
   
  
 
-  
+  .new-task {
+    margin-top: 28px;
+  }
   
   
   /* New Task Button */

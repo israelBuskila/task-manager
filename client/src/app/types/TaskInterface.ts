@@ -7,6 +7,6 @@ export interface TaskI {
     progress: number
 }
 
-export type CategoryI = 'Work' | 'Personal' | 'Shop' | 'Pets'| 'Self Care';
+export type CategoryI = 'Work' | 'Personal' | 'Shop' | 'Pets'| 'Self Care' | '';
 
 

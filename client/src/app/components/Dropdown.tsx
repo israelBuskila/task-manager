@@ -16,10 +16,10 @@ const Dropdown: React.FC<DropdownProps> = ({ selectedItems, setSelectedItems }) 
 
   const handleCheckboxChange = (id: string) => {
     const updatedItems = selectedItems.includes(id)
-      ? selectedItems.filter((item) => item !== id) // Remove if already selected
-      : [...selectedItems, id]; // Add if not selected
+      ? selectedItems.filter((item) => item !== id) 
+      : [...selectedItems, id]; 
 
-    setSelectedItems(updatedItems); // Directly pass the updated array
+    setSelectedItems(updatedItems); 
   };
 
   return (

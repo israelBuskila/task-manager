@@ -4,8 +4,7 @@ import { dummyTasks } from "../utils/dummyTasks";
 
 const getTasks = (): TaskI[] => {
   const savedTasks = localStorage.getItem("tasks");
-  console.log(savedTasks)
-  return savedTasks && savedTasks?.length < 0 ? JSON.parse(savedTasks) : dummyTasks;
+  return savedTasks && savedTasks?.length > 0 ? JSON.parse(savedTasks) : dummyTasks;
 }
 
 const useTasks = () => {

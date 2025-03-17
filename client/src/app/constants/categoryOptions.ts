@@ -1,3 +1,5 @@
+import { CategoryI } from "../types/TaskInterface";
+
 export const CATEGORY_OPTIONS: Record<string, CategoryOption> = {
     Work: { value: "Work", label: "Work", backgroundColor: "#EDE4FF", color: '#9260F4' },
     Personal: { value: "Personal", label: "Personal", backgroundColor: "#FFE4F2", color: '#F478B8' },
@@ -7,7 +9,7 @@ export const CATEGORY_OPTIONS: Record<string, CategoryOption> = {
 };
 
 export interface CategoryOption {
-    value: string;
+    value: CategoryI;
     label: string;
     color: string;
     backgroundColor: string;

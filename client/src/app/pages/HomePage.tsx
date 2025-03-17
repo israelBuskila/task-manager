@@ -4,17 +4,17 @@ import TaskItem from "../components/TaskItem";
 import { useNavigate } from "react-router-dom";
 import '../styles/HomePage.css';
 import Dropdown from "../components/Dropdown";
+import CTAButton from "../components/CTAButton";
 
 const HomePage: React.FC = () => {
   const [filterCategory, setFilterCategory] = useState<string[]>([]);
   const { tasks, deleteTask, updateTask } = useTasks();
   const navigate = useNavigate();
 
-  // ✅ Properly filter tasks based on selected categories
   const filteredTasks =
     filterCategory.length > 0
       ? tasks.filter(task => filterCategory.includes(task.category)) // Multi-selection filtering
-      : tasks; // Show all if no filter applied
+      : tasks; 
 
   const inProgressCount = filteredTasks.reduce((acc, t) => (t.completed ? acc : acc + 1), 0);
   const completedCount = filteredTasks.length - inProgressCount;
@@ -48,9 +48,9 @@ const HomePage: React.FC = () => {
 
       
     </div>
-    <div className="new-task" > <button className="new-task-button" onClick={() => navigate("/task")}>
-        + New Task
-      </button></div>
+    <div className="new-task">
+         <CTAButton label="Add new task" variant="primary" onClick={() => navigate('/task')} fullWidth/>
+         </div>
    
     </div>
   );

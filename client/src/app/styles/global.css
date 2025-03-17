@@ -5,6 +5,10 @@
     --text-color: #222222;
     --primary-color: #4f46e5;
     --shadow-color: rgba(0, 0, 0, 0.12); 
+    --icon-color: #5F33E1;
+
+    --hover-color: #f0f0f0;
+    --selected-color: #e5e5ff;
   }
   
   /* Dark Mode */
@@ -12,8 +16,10 @@
     --bg-color: #0A013D;
     --bg-secondary-color: #342F65;
     --text-color: #ffffff;
-    --primary-color: #6366f1;
-    --shadow-color: rgba(99, 102, 241, 0.4); 
+    --primary-color: #5F33E1;
+    --shadow-color: rgba(99, 102, 241, 0.4);
+    --hover-color: #1e114f;
+    --selected-color: #5F33E1;
   }
   
   body {
@@ -23,4 +29,5 @@
     padding-right: 20px;
     padding-left: 20px;
   }
+
 
