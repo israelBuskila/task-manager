@@ -1,4 +1,19 @@
-
+.subtask-container {
+    max-height: 200px; /* Adjust height as needed */
+    /* overflow-y: auto; */
+    padding-left: 16px;
+    border-left-width: 4px;
+    border-left: 4px solid #5F33E1
+  }
+  
+  /* Subtask styling */
+  .subtask-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+ 
+  
 
 .back-button {
     gap: 8px;

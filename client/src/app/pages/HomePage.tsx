@@ -1,19 +1,19 @@
-import { useState } from "react";
-import useTasks from "../hooks/useTasks";
-import TaskItem from "../components/TaskItem";
 import { useNavigate } from "react-router-dom";
 import '../styles/HomePage.css';
 import Dropdown from "../components/Dropdown";
 import CTAButton from "../components/CTAButton";
+import { useAtom } from "jotai";
+import { filterCategoryAtom, tasksAtom } from "../data/state";
+import TaskItem from "../components/TaskItem";
 
 const HomePage: React.FC = () => {
-  const [filterCategory, setFilterCategory] = useState<string[]>([]);
-  const { tasks, deleteTask, updateTask } = useTasks();
+  const [tasks] = useAtom(tasksAtom); 
+  const [filterCategory, setFilterCategory] = useAtom(filterCategoryAtom); 
   const navigate = useNavigate();
 
   const filteredTasks =
     filterCategory.length > 0
-      ? tasks.filter(task => filterCategory.includes(task.category)) // Multi-selection filtering
+      ? tasks.filter(task => filterCategory.includes(task.category)) 
       : tasks; 
 
   const inProgressCount = filteredTasks.reduce((acc, t) => (t.completed ? acc : acc + 1), 0);
@@ -33,7 +33,7 @@ const HomePage: React.FC = () => {
 
       <div className="task-group">
         {filteredTasks.map(task => (
-          <TaskItem key={task.id} task={task} deleteTask={deleteTask} updateTask={updateTask} />
+          <TaskItem key={task.id} task={task} />
         ))}
       </div>
 

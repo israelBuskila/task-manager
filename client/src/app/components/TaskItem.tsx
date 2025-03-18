@@ -1,5 +1,5 @@
-import React, { useCallback } from "react";
-import { TaskI } from "../types/TaskInterface";
+import React from "react";
+import { Task } from "../types/TaskInterface";
 import { useNavigate } from "react-router-dom";
 import Checkbox from "./Checkbox";
 import '../styles/TaskItem.css'
@@ -7,23 +7,26 @@ import ProgressRing from "./ProgressRing";
 import { IconEdit, IconTrash } from "@tabler/icons-react";
 import RenderIcon from "./RenderIcon";
 import { CATEGORY_OPTIONS } from "../constants/categoryOptions";
+import { useSetAtom } from "jotai";
+import { deleteTaskAtom, updateTaskAtom } from "../data/state";
 
 interface TaskItemProps {
-  task: TaskI;
-  deleteTask: (id: number) => void;
-  updateTask: (task: TaskI) => void
+  task: Task;
 }
 
-const TaskItem: React.FC<TaskItemProps> = ({ task, deleteTask, updateTask }) => {
+const TaskItem: React.FC<TaskItemProps> = ({ task }) => {
   const navigate = useNavigate();
+  const update = useSetAtom(updateTaskAtom);
+  const removeTask = useSetAtom(deleteTaskAtom)
 
-  const handleToggleComplete = useCallback(() => {
-    updateTask({ ...task, completed: !task.completed });
-  }, [task, updateTask]);
+
+  const handleToggleComplete = () => {
+    update({ ...task, completed: !task.completed });
+  }
 
   const handleEdit = () => navigate(`/task/${task.id}`);
 
-  const handleDelete = () => deleteTask(task.id)
+  const handleDelete = () => removeTask(task.id)
 
 
   return (
