@@ -28,6 +28,14 @@ const TaskItem: React.FC<TaskItemProps> = ({ task }) => {
 
   const handleDelete = () => removeTask(task.id)
 
+  const calcProgress = () => {
+    const total = task.subtasks.length;
+    const completed = task.subtasks.reduce((acc, subTask) => subTask.completed ? acc + 1 : acc, 0);
+    const progress = total > 0 ? Math.round((completed / total) * 100) : 0;
+    return progress;
+};
+
+
 
   return (
     <div className="hover">
@@ -42,7 +50,7 @@ const TaskItem: React.FC<TaskItemProps> = ({ task }) => {
           <span className={`task-title `}>{task.title}</span>
         </div>
       </div>
-        <ProgressRing progress={task.progress} color={CATEGORY_OPTIONS[task.category].color}/>
+        <ProgressRing progress={calcProgress()} color={CATEGORY_OPTIONS[task.category].color}/>
       </div>
 
 

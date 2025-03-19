@@ -4,29 +4,38 @@ import Checkbox from "./Checkbox";
 import "../styles/SubTaskItem.css";
 import { Icons } from "../constants/icon";
 import { useSetAtom } from "jotai";
-import { deleteSubtaskAtom, updateSubtaskAtom } from "../data/state";
+import { updateSubtaskAtom } from "../data/state";
 import Input from "./Input";
 
 interface SubTaskItemProps {
   taskId: string;
   subTask: SubTask;
-  onToggleComplete: () => void;
-  onDelete: () => void;
+  onChange: (subTask: SubTask) => void;
+  onDelete: (subTaskId: string) => void;
 }
 
 const handleEdit = () => { }
 
 
-const SubTaskItem: React.FC<SubTaskItemProps> = ({ taskId, subTask, onDelete }) => {
+const SubTaskItem: React.FC<SubTaskItemProps> = ({ taskId, subTask,onChange, onDelete }) => {
   const updateSubTask = useSetAtom(updateSubtaskAtom)
   const [completed, setCompleted] = useState(subTask.completed)
-  const [updatedSubTask, setUpdatedSubTask] = useState<SubTask>()
-  const deleteSubTask = useSetAtom(deleteSubtaskAtom)
+  const [updatedSubTask, setUpdatedSubTask] = useState<SubTask>(subTask)
 
   const onToggleComplete = () => {
     setCompleted(prev => !prev)
-    const updatedSubTasks = { ...subTask, completed: !subTask.completed } as SubTask
-    updateSubTask({ taskId, subtask: updatedSubTasks })
+    // const updatedSubTask = { ...subTask, completed: !subTask.completed } as SubTask
+    // updateSubTask({ taskId, subtask: updatedSubTask })
+  }
+
+  const handleOnChange = (value: string) => {
+    const updated = {...subTask, title: value}
+    setUpdatedSubTask({...subTask, title: value})
+    onChange(updated)
+  }
+
+  const handelOnDelete = () => {
+    onDelete(subTask.id)
   }
 
   return (
@@ -34,14 +43,14 @@ const SubTaskItem: React.FC<SubTaskItemProps> = ({ taskId, subTask, onDelete }) 
       <Checkbox checked={completed} onChange={onToggleComplete} />
 
       <div className="subtask-hover">
-        <Input label="Sub task" value={subTask.title} onChange={() => { }} />
+        <Input label="Sub task" value={updatedSubTask.title} onChange={handleOnChange} />
       </div>
 
       <div className="edit-delete">
         <button onClick={handleEdit} className="edit-btn">
           <Icons.edit />
         </button>
-        <button onClick={() => deleteSubTask({taskId, subtaskId: subTask.id})} className="delete-btn">
+        <button onClick={handelOnDelete} className="delete-btn">
           <Icons.delete />
         </button>
       </div>

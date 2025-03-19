@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useAtom, useSetAtom } from "jotai";
-import { addTaskAtom, tasksAtom, updateTaskAtom } from "../data/state";
-import { Task } from "../types/TaskInterface";
+import { addTaskAtom, deleteSubtaskAtom, tasksAtom, updateTaskAtom } from "../data/state";
+import { SubTask, Task } from "../types/TaskInterface";
 import { Icons } from "../constants/icon";
 import CategorySelection from "../components/CategorySelection";
 import Input from "../components/Input";
@@ -15,7 +15,7 @@ const TaskManagementPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const [tasks] = useAtom(tasksAtom); // Fix useAtom return value
+  const [tasks] = useAtom(tasksAtom); 
   const addTask = useSetAtom(addTaskAtom);
   const updateTask = useSetAtom(updateTaskAtom);
 
@@ -36,12 +36,33 @@ const TaskManagementPage = () => {
 
   const handleToggleTask = () => setTask((prev) => ({ ...prev, completed: true }))
 
+  const handleOnChangeTask = (value: string) => {
+    setTask({ ...task, title: value });
+    setError("");
+  }
+
+  const onChangeSubTask = (subTask: SubTask) => {
+    const updatedSubTask = {...task.subtasks}.map(st => st.id === subTask.id ? subTask : st)
+    setTask({ ...task, subtasks: updatedSubTask });
+    setError("");
+  }
+
+  const handleAddSubTask = () => {
+    const newSubTask: SubTask = { id: Date.now().toString(), title: "New Sub Task", completed: false };
+    const updatedSubTasks: SubTask[] = [...task.subtasks, newSubTask];
+    setTask({ ...task, subtasks: updatedSubTasks });
+};
+
+const handleDeleteSubTask = (subTaskId: string) => {
+  const updatedSubTasks = [...task.subtasks].filter(st => st.id !== subTaskId)
+  setTask({...task, subtasks: updatedSubTasks})
+}
+
   const handleSave = () => {
     if (!task.title.trim()) {
       setError("Task name is required.");
       return;
     }
-
     if (existingTask) {
       updateTask(task);
     } else {
@@ -66,10 +87,7 @@ const TaskManagementPage = () => {
         <Input
           label='Name your task'
           value={task.title}
-          onChange={(value) => {
-            setTask({ ...task, title: value });
-            setError("");
-          }}
+          onChange={handleOnChangeTask}
           placeholder="Name your task..."
           error={error}
         />
@@ -80,13 +98,13 @@ const TaskManagementPage = () => {
         key={subTask.id}
         taskId={task.id}
         subTask={subTask}
-        onToggleComplete={() => {}}
-        onDelete={() => {}}
+        onChange={onChangeSubTask}
+        onDelete={handleDeleteSubTask}
       />
     ))}
 </div>
 
-        <CTAButton label="+ Add sub tasks" variant="secondary" onClick={() => {}} />
+        <CTAButton label="+ Add sub tasks" variant="secondary" onClick={handleAddSubTask} />
       </div>
 
       <div className="new-task">
