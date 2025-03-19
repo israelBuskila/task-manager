@@ -1,14 +1,13 @@
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useAtom, useSetAtom } from "jotai";
-import { addTaskAtom, deleteSubtaskAtom, tasksAtom, updateTaskAtom } from "../data/state";
+import { addTaskAtom, tasksAtom, updateTaskAtom } from "../data/state";
 import { SubTask, Task } from "../types/TaskInterface";
 import { Icons } from "../constants/icon";
 import CategorySelection from "../components/CategorySelection";
 import Input from "../components/Input";
 import CTAButton from "../components/CTAButton";
 import "../styles/TaskManagementPage.css";
-
 import SubTaskItem from "../components/SubTaskItem";
 
 const TaskManagementPage = () => {
@@ -58,6 +57,11 @@ const handleDeleteSubTask = (subTaskId: string) => {
   setTask({...task, subtasks: updatedSubTasks})
 }
 
+const onToggleComplete = (subTaskId: string) => {
+  const updatedSubTasks = [...task.subtasks].map(st => st.id === subTaskId ? {...st, completed: !st.completed} : st)
+  setTask({...task, subtasks: updatedSubTasks})
+}
+
   const handleSave = () => {
     if (!task.title.trim()) {
       setError("Task name is required.");
@@ -100,6 +104,7 @@ const handleDeleteSubTask = (subTaskId: string) => {
         subTask={subTask}
         onChange={onChangeSubTask}
         onDelete={handleDeleteSubTask}
+        onToggleComplete={onToggleComplete}
       />
     ))}
 </div>

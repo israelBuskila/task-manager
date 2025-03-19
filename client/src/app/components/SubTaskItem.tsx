@@ -12,18 +12,20 @@ interface SubTaskItemProps {
   subTask: SubTask;
   onChange: (subTask: SubTask) => void;
   onDelete: (subTaskId: string) => void;
+  onToggleComplete: (subTaskId: string) => void;
 }
 
 const handleEdit = () => { }
 
 
-const SubTaskItem: React.FC<SubTaskItemProps> = ({ taskId, subTask,onChange, onDelete }) => {
+const SubTaskItem: React.FC<SubTaskItemProps> = ({ taskId, subTask,onChange, onDelete, onToggleComplete}) => {
   const updateSubTask = useSetAtom(updateSubtaskAtom)
   const [completed, setCompleted] = useState(subTask.completed)
   const [updatedSubTask, setUpdatedSubTask] = useState<SubTask>(subTask)
 
-  const onToggleComplete = () => {
-    setCompleted(prev => !prev)
+  const handleOnToggleComplete = () => {
+    // setCompleted(prev => !prev)
+    onToggleComplete(subTask.id)
     // const updatedSubTask = { ...subTask, completed: !subTask.completed } as SubTask
     // updateSubTask({ taskId, subtask: updatedSubTask })
   }
@@ -40,7 +42,7 @@ const SubTaskItem: React.FC<SubTaskItemProps> = ({ taskId, subTask,onChange, onD
 
   return (
     <div className="subtask-item ">
-      <Checkbox checked={completed} onChange={onToggleComplete} />
+      <Checkbox checked={subTask.completed} onChange={handleOnToggleComplete} />
 
       <div className="subtask-hover">
         <Input label="Sub task" value={updatedSubTask.title} onChange={handleOnChange} />
