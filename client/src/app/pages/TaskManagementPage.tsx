@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useAtom, useSetAtom } from "jotai";
-import { addTaskAtom, tasksAtom, updateTaskAtom } from "../data/state";
+import { tasksAtom, updateTaskAtom } from "../data/state";
 import { SubTask, Task } from "../types/TaskInterface";
 import { Icons } from "../constants/icon";
 import CategorySelection from "../components/CategorySelection";
@@ -15,7 +15,7 @@ const TaskManagementPage = () => {
   const navigate = useNavigate();
 
   const [tasks, setTasks] = useAtom(tasksAtom); 
-  const addTask = useSetAtom(addTaskAtom);
+  // const addTask = useSetAtom(addTaskAtom);
   const updateTask = useSetAtom(updateTaskAtom);
 
   const existingTask = tasks.find((task) => task.id ===id);
