@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import "../styles/Dropdown.css";
 import RenderIcon from "./RenderIcon";
-import { CATEGORY_OPTIONS, CategoryOption } from "../constants/categoryOptions";
+import { CATEGORY_OPTIONS } from "../constants/categoryOptions";
 
 interface CategorySelectionProps {
   selectedItems: string;
-  handleSelect: (item: CategoryOption) => void;
+  handleSelect: (item: string) => void;
 }
 
 const CategorySelection: React.FC<CategorySelectionProps> = ({ selectedItems, handleSelect }) => {

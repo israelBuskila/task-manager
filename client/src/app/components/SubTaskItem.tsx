@@ -3,8 +3,6 @@ import { SubTask } from "../types/TaskInterface"; // Define the SubTask type
 import Checkbox from "./Checkbox";
 import "../styles/SubTaskItem.css";
 import { Icons } from "../constants/icon";
-import { useSetAtom } from "jotai";
-import { updateSubtaskAtom } from "../data/state";
 import Input from "./Input";
 
 interface SubTaskItemProps {
@@ -15,20 +13,12 @@ interface SubTaskItemProps {
   onToggleComplete: (subTaskId: string) => void;
 }
 
-const handleEdit = () => { }
-
-
-const SubTaskItem: React.FC<SubTaskItemProps> = ({ taskId, subTask,onChange, onDelete, onToggleComplete}) => {
-  const updateSubTask = useSetAtom(updateSubtaskAtom)
-  const [completed, setCompleted] = useState(subTask.completed)
+const SubTaskItem: React.FC<SubTaskItemProps> = ({subTask, onChange, onDelete, onToggleComplete}) => {
   const [updatedSubTask, setUpdatedSubTask] = useState<SubTask>(subTask)
 
-  const handleOnToggleComplete = () => {
-    // setCompleted(prev => !prev)
-    onToggleComplete(subTask.id)
-    // const updatedSubTask = { ...subTask, completed: !subTask.completed } as SubTask
-    // updateSubTask({ taskId, subtask: updatedSubTask })
-  }
+  const handleOnToggleComplete = () => onToggleComplete(subTask.id)
+
+  const handelOnDelete = () => onDelete(subTask.id)
 
   const handleOnChange = (value: string) => {
     const updated = {...subTask, title: value}
@@ -36,12 +26,9 @@ const SubTaskItem: React.FC<SubTaskItemProps> = ({ taskId, subTask,onChange, onD
     onChange(updated)
   }
 
-  const handelOnDelete = () => {
-    onDelete(subTask.id)
-  }
-
   return (
     <div className="subtask-item ">
+
       <Checkbox checked={subTask.completed} onChange={handleOnToggleComplete} />
 
       <div className="subtask-hover">
@@ -49,15 +36,13 @@ const SubTaskItem: React.FC<SubTaskItemProps> = ({ taskId, subTask,onChange, onD
       </div>
 
       <div className="edit-delete">
-        <button onClick={handleEdit} className="edit-btn">
+        <button onClick={() => {}} className="edit-btn">
           <Icons.edit />
         </button>
         <button onClick={handelOnDelete} className="delete-btn">
           <Icons.delete />
         </button>
       </div>
-
-
 
     </div>
   );
