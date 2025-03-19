@@ -14,7 +14,7 @@ This is a **Task Management Application** built with **React, TypeScript, Jotai,
 - 📊 **Track progress with a custom progress ring**
 - 📝 **Add and manage subtasks**
 - 🎨 **Fully custom-built components including Input, Dropdown, Controller, and Progress Ring**
-- 📦 **State management powered by Jotai**
+- 🛆 **State management powered by Jotai**
 - 📱 **Fully responsive design**
 - ⚡ **Built with Vite for fast performance**
 
@@ -27,13 +27,19 @@ This is a **Task Management Application** built with **React, TypeScript, Jotai,
    cd task-management-app
    ```
 
-2. Install dependencies:
+2. Navigate to the client folder:
+
+   ```bash
+   cd client
+   ```
+
+3. Install dependencies:
 
    ```bash
    npm install
    ```
 
-3. Run the development server:
+4. Run the development server:
 
    ```bash
    npm start
@@ -52,10 +58,6 @@ This is a **Task Management Application** built with **React, TypeScript, Jotai,
 - 🌍 **Add backend support** for persistent task storage
 - 📅 **Implement due dates** and reminders for tasks
 - 🏗️ **Implement drag-and-drop (DND) functionality** for better task organization
-
-## License
-
-This project is licensed under the **MIT License**.
 
 ---
 
