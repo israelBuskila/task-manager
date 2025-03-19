@@ -14,7 +14,7 @@ const TaskManagementPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const [tasks] = useAtom(tasksAtom); 
+  const [tasks, setTasks] = useAtom(tasksAtom); 
   const addTask = useSetAtom(addTaskAtom);
   const updateTask = useSetAtom(updateTaskAtom);
 
@@ -67,10 +67,18 @@ const onToggleComplete = (subTaskId: string) => {
       setError("Task name is required.");
       return;
     }
+
+    if (!task.category.trim()) {
+      setError("Task category is required.");
+      return;
+    }
+
     if (existingTask) {
       updateTask(task);
     } else {
-      addTask(task);
+      // addTask(task);
+      setTasks(prevTasks => [...prevTasks, task])
+      
     }
 
     navigate("/");
