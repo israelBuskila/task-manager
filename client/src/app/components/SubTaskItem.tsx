@@ -1,40 +1,53 @@
-import React from "react";
+import React, { useState } from "react";
 import { SubTask } from "../types/TaskInterface"; // Define the SubTask type
 import Checkbox from "./Checkbox";
-import { IconEdit, IconTrash } from "@tabler/icons-react";
 import "../styles/SubTaskItem.css";
+import { Icons } from "../constants/icon";
+import { useSetAtom } from "jotai";
+import { deleteSubtaskAtom, updateSubtaskAtom } from "../data/state";
+import Input from "./Input";
 
 interface SubTaskItemProps {
+  taskId: string;
   subTask: SubTask;
   onToggleComplete: () => void;
   onDelete: () => void;
 }
-const handleEdit = () => {}
+
+const handleEdit = () => { }
 
 
-const SubTaskItem: React.FC<SubTaskItemProps> = ({ subTask, onToggleComplete, onDelete }) => {
+const SubTaskItem: React.FC<SubTaskItemProps> = ({ taskId, subTask, onDelete }) => {
+  const updateSubTask = useSetAtom(updateSubtaskAtom)
+  const [completed, setCompleted] = useState(subTask.completed)
+  const [updatedSubTask, setUpdatedSubTask] = useState<SubTask>()
+  const deleteSubTask = useSetAtom(deleteSubtaskAtom)
+
+  const onToggleComplete = () => {
+    setCompleted(prev => !prev)
+    const updatedSubTasks = { ...subTask, completed: !subTask.completed } as SubTask
+    updateSubTask({ taskId, subtask: updatedSubTasks })
+  }
+
   return (
     <div className="subtask-item ">
-<Checkbox checked={subTask.completed} onChange={onToggleComplete} />
+      <Checkbox checked={completed} onChange={onToggleComplete} />
 
-    <div className="subtask-hover">
-
-        <div className="info">
-          <span className={`task-title`}>{subTask.title}</span>
-        </div>
-
+      <div className="subtask-hover">
+        <Input label="Sub task" value={subTask.title} onChange={() => { }} />
+      </div>
 
       <div className="edit-delete">
         <button onClick={handleEdit} className="edit-btn">
-        <IconEdit size={24} stroke={2} color="#5F33E1" />
+          <Icons.edit />
         </button>
-        <button onClick={onDelete} className="delete-btn">
-        <IconTrash size={24} stroke={2} color="#5F33E1" />
+        <button onClick={() => deleteSubTask({taskId, subtaskId: subTask.id})} className="delete-btn">
+          <Icons.delete />
         </button>
-      </div>
       </div>
 
-   
+
+
     </div>
   );
 };

@@ -32,7 +32,6 @@ export const deleteTaskAtom = atom(null, (get, set, taskId: string) => {
   set(tasksAtom, tasks);
 });
 
-// **Methods for Subtasks**
 export const addSubtaskAtom = atom(
   null,
   (get, set, { taskId, subtask }: { taskId: string; subtask: SubTask }) => {

@@ -34,6 +34,8 @@ const TaskManagementPage = () => {
     }));
   };
 
+  const handleToggleTask = () => setTask((prev) => ({ ...prev, completed: true }))
+
   const handleSave = () => {
     if (!task.title.trim()) {
       setError("Task name is required.");
@@ -59,10 +61,10 @@ const TaskManagementPage = () => {
       <div className="create-task">
         <h3>{existingTask ? "Edit Task" : "Create New Task"}</h3>
 
-        <CategorySelection selectedItems={task.category} handleSelect={handleSelect} />
+        <CategorySelection  selectedItems={task.category} handleSelect={handleSelect} />
 
         <Input
-          label=""
+          label='Name your task'
           value={task.title}
           onChange={(value) => {
             setTask({ ...task, title: value });
@@ -73,16 +75,15 @@ const TaskManagementPage = () => {
         />
 
 <div className="subtask-container">
-  <div className="subtask-group">
-    {task.subtasks?.map((subTask, index) => (
+    {task.subtasks?.map((subTask) => (
        <SubTaskItem
-        key={index}
+        key={subTask.id}
+        taskId={task.id}
         subTask={subTask}
         onToggleComplete={() => {}}
         onDelete={() => {}}
       />
     ))}
-  </div>
 </div>
 
         <CTAButton label="+ Add sub tasks" variant="secondary" onClick={() => {}} />
@@ -95,7 +96,7 @@ const TaskManagementPage = () => {
             <CTAButton
               label="✔ Mark as completed"
               variant="secondary"
-              onClick={() => setTask((prev) => ({ ...prev, completed: true }))}
+              onClick={handleToggleTask}
               fullWidth
             />
           )}

@@ -4,11 +4,11 @@ import { useNavigate } from "react-router-dom";
 import Checkbox from "./Checkbox";
 import '../styles/TaskItem.css'
 import ProgressRing from "./ProgressRing";
-import { IconEdit, IconTrash } from "@tabler/icons-react";
 import RenderIcon from "./RenderIcon";
 import { CATEGORY_OPTIONS } from "../constants/categoryOptions";
 import { useSetAtom } from "jotai";
 import { deleteTaskAtom, updateTaskAtom } from "../data/state";
+import { Icons } from "../constants/icon";
 
 interface TaskItemProps {
   task: Task;
@@ -48,10 +48,10 @@ const TaskItem: React.FC<TaskItemProps> = ({ task }) => {
 
       <div className="edit-delete">
         <button onClick={handleEdit} className="edit-btn">
-        <IconEdit size={24} stroke={2} color="#5F33E1" />
+        <Icons.edit />
         </button>
         <button onClick={handleDelete} className="delete-btn">
-        <IconTrash size={24} stroke={2} color="#5F33E1" />
+        <Icons.delete />
         </button>
       </div>
    

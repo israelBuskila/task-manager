@@ -1,65 +1,34 @@
-/* .subtask-item {
+.subtask-item {
     display: flex;
     align-items: center;
-    gap: 12px; 
-    width: 100%;
-    height: 100%;
+    position: relative;
+    width: 100%
+
 }
 
 .subtask-hover {
-    flex-grow: 1;
-    font-size: 14px;
-    position: relative;
-    display: flex;
-    align-items: center;
-}
-
-.info {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: var(--bg-secondary-color);
-    padding: 8px 12px;
-    border-radius: 12px;
     width: 100%;
-    transition: width 0.3s ease;
-    cursor: pointer;  
-    box-shadow: 0px 1px 6px 0px var(--shadow-color);
-    position: relative;
+
 }
 
-.edit-delete {
-    position: absolute;
-    right: 10px;
-    display: flex;
-    gap: 10px;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
+
+
+.subtask-title {
+    font-family: Inter;
+font-weight: 500;
+font-size: 14px;
+line-height: 100%;
+letter-spacing: 0%;
+
 }
 
-button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 6px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 6px;
-    transition: all 0.3s ease;
+
+
+.subtask-item:hover .subtask-hover {
+    width: calc(100% - 8%); 
 }
 
-.edit-icon, .delete-icon {
-    filter: brightness(0) saturate(100%) invert(34%) sepia(84%) saturate(747%) hue-rotate(240deg) brightness(92%) contrast(95%);
-    transition: transform 0.2s ease;
-}
-
-.subtask-hover:hover .info {
-    width: calc(100% - 50px); 
-}
-
-.subtask-hover:hover .edit-delete {
+.subtask-item:hover .edit-delete {
     opacity: 1;
     visibility: visible;
-}  */
+} 
