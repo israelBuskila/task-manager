@@ -3,32 +3,26 @@
     align-items: center;
     position: relative;
     width: 100%
-
 }
 
 .subtask-hover {
     width: 100%;
-
+    transition: width 0.3s ease;
 }
-
-
 
 .subtask-title {
     font-family: Inter;
-font-weight: 500;
-font-size: 14px;
-line-height: 100%;
-letter-spacing: 0%;
-
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 100%;
+    letter-spacing: 0%;
 }
 
-
-
 .subtask-item:hover .subtask-hover {
-    width: calc(100% - 8%); 
+    width: calc(100% - 8%);
 }
 
 .subtask-item:hover .edit-delete {
     opacity: 1;
     visibility: visible;
-} 
+}
