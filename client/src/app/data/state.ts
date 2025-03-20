@@ -2,9 +2,6 @@ import { atom } from "jotai";
 import { initialTasks } from "../utils/dummyTasks";
 import { SubTask, Task } from "../types/TaskInterface";
 
-
-
-// Jotai Atom
 export const tasksAtom = atom<Task[]>(initialTasks);
 export const filterCategoryAtom = atom<string[]>([]);
 

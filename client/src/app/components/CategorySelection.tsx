@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../styles/Dropdown.css";
-import RenderIcon from "./RenderIcon";
+import RenderIconCategory from "./RenderIcon";
 import { CATEGORY_OPTIONS } from "../constants/categoryOptions";
 import Typography from "./Typography";
 
@@ -18,7 +18,7 @@ const CategorySelection: React.FC<CategorySelectionProps> = ({ selectedItems, ha
     if (!selectedItems) return <Typography variant="medium">Select Category</Typography>
     return (
       <div className="title">
-        <RenderIcon
+        <RenderIconCategory
           className="icon"
           iconName={selectedItems}
           backgroundColor={CATEGORY_OPTIONS[selectedItems]?.backgroundColor}
@@ -45,14 +45,13 @@ const CategorySelection: React.FC<CategorySelectionProps> = ({ selectedItems, ha
               onClick={() => handleSelect(option.value)} 
               className={`dropdown-item ${selectedItems === option.value ? "selected" : ""}`}
             >
-              <RenderIcon
+              <RenderIconCategory
                 className="icon"
                 iconName={option.value}
                 backgroundColor={option.backgroundColor}
                 size={16}
               />
               <span>{option.label}</span>
-              {/* <Typography>{option.label}</Typography> */}
             </label>
           ))}
         </div>

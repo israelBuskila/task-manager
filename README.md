@@ -15,7 +15,6 @@ This is a **Task Management Application** built with **React, TypeScript, Jotai,
 - 📝 **Add and manage subtasks**
 - 🎨 **Fully custom-built components including Input, Dropdown, Controller, and Progress Ring**
 - 🛆 **State management powered by Jotai**
-- 📱 **Fully responsive design**
 - ⚡ **Built with Vite for fast performance**
 
 ## Installation
@@ -58,8 +57,7 @@ This is a **Task Management Application** built with **React, TypeScript, Jotai,
 - 🌍 **Add backend support** for persistent task storage
 - 📅 **Implement due dates** and reminders for tasks
 - 🏗️ **Implement drag-and-drop (DND) functionality** for better task organization
+- 📱 **Implement Fully responsive design**
 
----
 
-🚀 **Happy Coding!**
 

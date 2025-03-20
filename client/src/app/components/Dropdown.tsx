@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../styles/Dropdown.css";
 import Checkbox from "./Checkbox";
-import RenderIcon from "./RenderIcon";
+import RenderIconCategory from "./RenderIcon";
 import { CATEGORY_OPTIONS } from "../constants/categoryOptions";
 import Typography from "./Typography";
 
@@ -38,7 +38,7 @@ const Dropdown: React.FC<DropdownProps> = ({ selectedItems, setSelectedItems }) 
                 checked={selectedItems.includes(option.value)}
                 onChange={() => handleCheckboxChange(option.value)}
               />
-              <RenderIcon
+              <RenderIconCategory
                 className="icon"
                 iconName={option.value}
                 backgroundColor={option.backgroundColor}

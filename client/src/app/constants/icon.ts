@@ -7,6 +7,9 @@ import Pets from '../../assets/icons/icontype=Pets.svg'
 import SelfCare from '../../assets/icons/icontype=selfCare.svg'
 import Shop from '../../assets/icons/icontype=shop.svg'
 import Work from '../../assets/icons/icontype=Work.svg?react'
+import Check from '../../assets/icons/icontype=check.svg?react'
+import Logo from '../../assets/icons/Vector.svg?react'
+import Sun from '../../assets/icons/icontype=sun.svg'
 
 export const Icons = {
     back: BackIcon,
@@ -17,5 +20,8 @@ export const Icons = {
     pets: Pets,
     selfCare: SelfCare,
     shop: Shop,
-    work: Work
+    work: Work,
+    check: Check,
+    logo: Logo,
+    sun: Sun
 }

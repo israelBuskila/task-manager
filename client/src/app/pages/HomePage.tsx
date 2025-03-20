@@ -51,7 +51,7 @@ const HomePage: React.FC = () => {
       
     </div>
     <div className="new-task">
-         <CTAButton label="Add new task" variant="primary" onClick={() => navigate('/task')} fullWidth/>
+         <CTAButton label="+ Add new task" variant="primary" onClick={() => navigate('/task')} fullWidth/>
          </div>
    
     </div>
