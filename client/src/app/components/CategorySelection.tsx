@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../styles/Dropdown.css";
 import RenderIcon from "./RenderIcon";
 import { CATEGORY_OPTIONS } from "../constants/categoryOptions";
+import Typography from "./Typography";
 
 interface CategorySelectionProps {
   selectedItems: string;
@@ -14,7 +15,7 @@ const CategorySelection: React.FC<CategorySelectionProps> = ({ selectedItems, ha
   const toggleDropdown = () => setIsOpen(!isOpen);
   
   const getTitle = () => {
-    if (!selectedItems) return 'Select Category';
+    if (!selectedItems) return <Typography variant="medium">Select Category</Typography>
     return (
       <div className="title">
         <RenderIcon
@@ -23,12 +24,13 @@ const CategorySelection: React.FC<CategorySelectionProps> = ({ selectedItems, ha
           backgroundColor={CATEGORY_OPTIONS[selectedItems]?.backgroundColor}
           size={12}
         />
-        <span>{selectedItems}</span>
+        <Typography>{selectedItems}</Typography>
       </div>
     );
   };
 
   return (
+    <div>
     <div className="dropdown">
       <button className="dropdown-toggle" onClick={toggleDropdown}>
         {getTitle()}
@@ -50,10 +52,12 @@ const CategorySelection: React.FC<CategorySelectionProps> = ({ selectedItems, ha
                 size={16}
               />
               <span>{option.label}</span>
+              {/* <Typography>{option.label}</Typography> */}
             </label>
           ))}
         </div>
       )}
+    </div>
     </div>
   );
 };

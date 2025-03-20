@@ -37,6 +37,11 @@
   /* border-left: 4px solid #5F33E1; Keeps the left border visible */
 }
 
+.subtasks-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
 
 .subtask-group {
     display: flex;
@@ -54,6 +59,8 @@
     flex-direction: column;
     gap: 20px;
 }
+
+
 
 .save-changes {
     display: flex;

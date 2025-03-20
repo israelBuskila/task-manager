@@ -9,16 +9,17 @@ import Input from "../components/Input";
 import CTAButton from "../components/CTAButton";
 import "../styles/TaskManagementPage.css";
 import SubTaskItem from "../components/SubTaskItem";
+import Typography from "../components/Typography";
 
 const TaskManagementPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const [tasks, setTasks] = useAtom(tasksAtom); 
+  const [tasks, setTasks] = useAtom(tasksAtom);
   // const addTask = useSetAtom(addTaskAtom);
   const updateTask = useSetAtom(updateTaskAtom);
 
-  const existingTask = tasks.find((task) => task.id ===id);
+  const existingTask = tasks.find((task) => task.id === id);
 
   const [task, setTask] = useState<Task>(
     existingTask || { id: Date.now().toString(), title: "", category: "", completed: false, progress: 0, subtasks: [] }
@@ -41,7 +42,7 @@ const TaskManagementPage = () => {
   }
 
   const onChangeSubTask = (subTask: SubTask) => {
-    const updatedSubTask = {...task.subtasks}.map(st => st.id === subTask.id ? subTask : st)
+    const updatedSubTask = { ...task.subtasks }.map(st => st.id === subTask.id ? subTask : st)
     setTask({ ...task, subtasks: updatedSubTask });
     setError("");
   }
@@ -50,17 +51,17 @@ const TaskManagementPage = () => {
     const newSubTask: SubTask = { id: Date.now().toString(), title: "New Sub Task", completed: false };
     const updatedSubTasks: SubTask[] = [...task.subtasks, newSubTask];
     setTask({ ...task, subtasks: updatedSubTasks });
-};
+  };
 
-const handleDeleteSubTask = (subTaskId: string) => {
-  const updatedSubTasks = [...task.subtasks].filter(st => st.id !== subTaskId)
-  setTask({...task, subtasks: updatedSubTasks})
-}
+  const handleDeleteSubTask = (subTaskId: string) => {
+    const updatedSubTasks = [...task.subtasks].filter(st => st.id !== subTaskId)
+    setTask({ ...task, subtasks: updatedSubTasks })
+  }
 
-const onToggleComplete = (subTaskId: string) => {
-  const updatedSubTasks = [...task.subtasks].map(st => st.id === subTaskId ? {...st, completed: !st.completed} : st)
-  setTask({...task, subtasks: updatedSubTasks})
-}
+  const onToggleComplete = (subTaskId: string) => {
+    const updatedSubTasks = [...task.subtasks].map(st => st.id === subTaskId ? { ...st, completed: !st.completed } : st)
+    setTask({ ...task, subtasks: updatedSubTasks })
+  }
 
   const handleSave = () => {
     if (!task.title.trim()) {
@@ -78,7 +79,7 @@ const onToggleComplete = (subTaskId: string) => {
     } else {
       // addTask(task);
       setTasks(prevTasks => [...prevTasks, task])
-      
+
     }
 
     navigate("/");
@@ -88,13 +89,13 @@ const onToggleComplete = (subTaskId: string) => {
     <div>
       <button className="back-button" onClick={() => navigate(-1)}>
         <Icons.back width={24} height={24} />
-        <span className="back-text">Back</span>
+        <Typography variant="medium">Back</Typography>
       </button>
 
       <div className="create-task">
-        <h3>{existingTask ? "Edit Task" : "Create New Task"}</h3>
+        <Typography variant="large">{existingTask ? "Edit Task" : "Create New Task"}</Typography>
 
-        <CategorySelection  selectedItems={task.category} handleSelect={handleSelect} />
+        <CategorySelection selectedItems={task.category} handleSelect={handleSelect} />
 
         <Input
           label='Name your task'
@@ -104,20 +105,23 @@ const onToggleComplete = (subTaskId: string) => {
           error={error}
         />
 
-<div className="subtask-container">
-    {task.subtasks?.map((subTask) => (
-       <SubTaskItem
-        key={subTask.id}
-        taskId={task.id}
-        subTask={subTask}
-        onChange={onChangeSubTask}
-        onDelete={handleDeleteSubTask}
-        onToggleComplete={onToggleComplete}
-      />
-    ))}
-</div>
+        <div className="subtask-container">
+          {task.subtasks?.map((subTask) => (
+            <SubTaskItem
+              key={subTask.id}
+              taskId={task.id}
+              subTask={subTask}
+              onChange={onChangeSubTask}
+              onDelete={handleDeleteSubTask}
+              onToggleComplete={onToggleComplete}
+            />
+          ))}
+        </div>
 
-        <CTAButton label="+ Add sub tasks" variant="secondary" onClick={handleAddSubTask} />
+        <div className="subtasks-actions">
+          <CTAButton label="+ Add sub tasks" variant="secondary" onClick={handleAddSubTask} />
+          <Icons.delete />
+        </div>
       </div>
 
       <div className="new-task">

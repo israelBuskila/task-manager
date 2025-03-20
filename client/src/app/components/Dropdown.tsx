@@ -3,6 +3,7 @@ import "../styles/Dropdown.css";
 import Checkbox from "./Checkbox";
 import RenderIcon from "./RenderIcon";
 import { CATEGORY_OPTIONS } from "../constants/categoryOptions";
+import Typography from "./Typography";
 
 interface DropdownProps {
   selectedItems: string[];
@@ -25,7 +26,7 @@ const Dropdown: React.FC<DropdownProps> = ({ selectedItems, setSelectedItems }) 
   return (
     <div className="dropdown">
       <button className="dropdown-toggle" onClick={toggleDropdown}>
-        <div className="title">Filter</div>
+        <Typography variant="large">Filter</Typography>
         <span className={`arrow ${isOpen ? "open" : ""}`}>▼</span>
       </button>
 

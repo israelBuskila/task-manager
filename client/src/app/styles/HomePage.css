@@ -1,109 +1,76 @@
-/* HomePage.css */
 .tasks {
   display: flex;
   flex-direction: column;
   font-family: Inter;
   padding-top: 28px;
-gap: 20px;
+  gap: 20px;
 
-  }
+}
 
-  .title-filter {
-    display: flex;
-    justify-content: space-between;
+.title-filter {
+  display: flex;
+  justify-content: space-between;
 
-  }
-  
-  
-  
-  .progress {
-display: flex;
-gap: 10px;
-align-items: center;
+}
 
-  }
-  .in-progress {
-    width: 87px;
-height: 19px;
-font-family: Inter;
-font-weight: 600;
-font-size: 16px;
-line-height: 100%;
-letter-spacing: 0%;
+.progress {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.count {
+  width: 10;
+  height: 19;
+  font-family: Inter;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #5F33E1;
+}
+
+.task-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.new-task {
+  margin-top: 28px;
+}
+
+.new-task-button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #5F33E1;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 28px;
+  margin-bottom: 28px;
+}
+
+.new-task-button:hover {
+  background-color: #291DD8;
+}
+
+.completed-section {
+  margin-top: 20px;
+}
+
+.completed-section h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+[data-theme="dark"] .task-item {
+  background-color: #342F65;
+}
 
 
-  }
-  .count {
-    width: 10;
-height: 19;
-font-family: Inter;
-font-weight: 600;
-font-size: 16px;
-line-height: 100%;
-letter-spacing: 0%;
-color: #5F33E1;
 
-  }
-
-  .task-group{
-    display: flex;
-    flex-direction: column;
-    /* padding-top: 28px; */
-    gap: 8px;
-  }
-  
- 
-
-  .new-task {
-    margin-top: 28px;
-  }
-  
-  
-  /* New Task Button */
-  .new-task-button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    background-color: #5F33E1;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-top: 28px;
-    margin-bottom: 28px;
-  }
-  
-  .new-task-button:hover {
-    background-color: #291DD8;
-  }
-  
-  /* Completed Section */
-  .completed-section {
-    margin-top: 20px;
-  }
-  
-  .completed-section h2 {
-    font-size: 18px;
-    margin-bottom: 10px;
-  }
-
-  [data-theme="dark"] .task-item {
-    background-color: #342F65;
-  }
-  
-  
-
-  @media (max-width: 600px) {
-    .home-page {
-      padding: 10px;
-    }
-  
-    .header h1 {
-      font-size: 20px;
-    }
-  
-    .new-task-button {
-      font-size: 14px;
-    }
-  }
+@media (max-width: 600px) {}

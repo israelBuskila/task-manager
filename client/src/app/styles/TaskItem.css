@@ -16,6 +16,11 @@
     transition: width 0.3s ease;
     cursor: pointer;
 }
+.task-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
 
 .edit-delete {
     position: absolute;
@@ -54,16 +59,4 @@ button {
 .hover:hover .progress-ring {
     opacity: 0;
     transition: opacity 0.3s ease;
-}
-
-.task-info {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.info {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
 }

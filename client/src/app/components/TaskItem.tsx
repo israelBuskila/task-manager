@@ -9,6 +9,7 @@ import { CATEGORY_OPTIONS } from "../constants/categoryOptions";
 import { useSetAtom } from "jotai";
 import { deleteTaskAtom, updateTaskAtom } from "../data/state";
 import { Icons } from "../constants/icon";
+import Typography from "./Typography";
 
 interface TaskItemProps {
   task: Task;
@@ -33,36 +34,35 @@ const TaskItem: React.FC<TaskItemProps> = ({ task }) => {
     const completed = task.subtasks.reduce((acc, subTask) => subTask.completed ? acc + 1 : acc, 0);
     const progress = total > 0 ? Math.round((completed / total) * 100) : 0;
     return progress;
-};
+  };
 
 
 
   return (
     <div className="hover">
-    <div className="task">
-      <div className="task-info">
-        <Checkbox checked={task.completed} onChange={handleToggleComplete} />
+      <div className="task">
+        <div className="task-info">
+          <Checkbox checked={task.completed} onChange={handleToggleComplete} />
 
-        <RenderIcon iconName={task.category} className="category-icon" backgroundColor={CATEGORY_OPTIONS[task.category].backgroundColor}/>
+          <RenderIcon iconName={task.category} className="category-icon" backgroundColor={CATEGORY_OPTIONS[task.category].backgroundColor} />
+<div className="info">
+<Typography variant="medium">{task.category}</Typography>
+<Typography variant="small">{task.title}</Typography>
+</div>
 
-        <div className="info">
-          <span className="task-category">{task.category}</span>
-          <span className={`task-title `}>{task.title}</span>
         </div>
+        <ProgressRing progress={calcProgress()} color={CATEGORY_OPTIONS[task.category].color} />
       </div>
-        <ProgressRing progress={calcProgress()} color={CATEGORY_OPTIONS[task.category].color}/>
-      </div>
-
 
       <div className="edit-delete">
         <button onClick={handleEdit} className="edit-btn">
-        <Icons.edit />
+          <Icons.edit />
         </button>
         <button onClick={handleDelete} className="delete-btn">
-        <Icons.delete />
+          <Icons.delete />
         </button>
       </div>
-   
+
     </div>
   );
 };

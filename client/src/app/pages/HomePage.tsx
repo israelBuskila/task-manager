@@ -5,6 +5,7 @@ import CTAButton from "../components/CTAButton";
 import { useAtom } from "jotai";
 import { filterCategoryAtom, tasksAtom } from "../data/state";
 import TaskItem from "../components/TaskItem";
+import Typography from "../components/Typography";
 
 const HomePage: React.FC = () => {
   const [tasks] = useAtom(tasksAtom); 
@@ -24,7 +25,7 @@ const HomePage: React.FC = () => {
     <div className="tasks">
       <div className="title-filter">
         <div className="progress">
-          <div className="in-progress">In Progress</div>
+          <Typography variant="large" >In Progress</Typography>
           <div className="count">{inProgressCount}</div>
         </div>
 
@@ -38,8 +39,9 @@ const HomePage: React.FC = () => {
       </div>
 
       <div className="title-filter">
+        
         <div className="progress">
-          <div className="in-progress">Completed</div>
+          <Typography variant="large">Completed</Typography>
           <div className="count">{completedCount}</div>
         </div>
 
