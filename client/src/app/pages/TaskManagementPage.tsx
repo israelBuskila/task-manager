@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useAtom, useSetAtom } from "jotai";
 import { addTaskAtom, tasksAtom, updateTaskAtom } from "../data/state";
 import { SubTask, Task } from "../types/TaskInterface";
-import { Icons } from "../constants/icon";
+import { Icons } from "../components/Icons";
 import CategorySelection from "../components/CategorySelection";
 import Input from "../components/Input";
 import CTAButton from "../components/CTAButton";
@@ -60,6 +60,10 @@ const TaskManagementPage = () => {
     setTask({ ...task, subtasks: updatedSubTasks })
   }
 
+  const deleteAllSubTasks = () => {
+    setTask({ ...task, subtasks: [] })
+  }
+
   const onToggleComplete = (subTaskId: string) => {
     const updatedSubTasks = [...task.subtasks].map(st => st.id === subTaskId ? { ...st, completed: !st.completed } : st)
     setTask({ ...task, subtasks: updatedSubTasks })
@@ -80,7 +84,6 @@ const TaskManagementPage = () => {
       updateTask(task);
     } else {
       addTask(task);
-      // setTasks(prevTasks => [...prevTasks, task])
     }
     navigate("/");
   };
@@ -120,7 +123,9 @@ const TaskManagementPage = () => {
 
         <div className="subtasks-actions">
           <CTAButton label="+ Add sub tasks" variant="secondary" onClick={handleAddSubTask} />
-          <Icons.delete />
+          <button onClick={deleteAllSubTasks}>
+            <Icons.delete />
+          </button>
         </div>
       </div>
 

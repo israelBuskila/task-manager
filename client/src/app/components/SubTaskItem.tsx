@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { SubTask } from "../types/TaskInterface"; // Define the SubTask type
 import Checkbox from "./Checkbox";
 import "../styles/SubTaskItem.css";
-import { Icons } from "../constants/icon";
+import { Icons } from "./Icons";
 import Input from "./Input";
 
 interface SubTaskItemProps {

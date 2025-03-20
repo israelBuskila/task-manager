@@ -4,13 +4,11 @@
   font-family: Inter;
   padding-top: 28px;
   gap: 20px;
-
 }
 
 .title-filter {
   display: flex;
   justify-content: space-between;
-
 }
 
 .progress {

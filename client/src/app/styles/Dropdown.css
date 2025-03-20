@@ -37,7 +37,6 @@
     box-shadow: 0px 1px 6px 0px var(--shadow-color);
     padding: 8px 0;
     z-index: 10;
-
 }
 
 .dropdown-item {
@@ -46,16 +45,15 @@
     padding: 8px 12px;
     gap: 8px;
     cursor: pointer;
-
 }
 
 .dropdown-item:hover {
     background-color: var(--hover-color);
-  }
-  
-  .dropdown-item.selected {
+}
+
+.dropdown-item.selected {
     background-color: var(--selected-color);
-  }
+}
 
 .dropdown-item input {
     cursor: pointer;
@@ -70,4 +68,3 @@
 .arrow.open {
     transform: rotate(180deg);
 }
-

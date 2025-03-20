@@ -1,4 +1,3 @@
 .icon {
-
-    object-fit: contain; /* Ensures the image is fully visible */
+    object-fit: contain;
 }

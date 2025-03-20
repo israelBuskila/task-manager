@@ -3,7 +3,7 @@ import '../styles/ProgressRing.css'
 
 interface ProgressRingProps {
     progress: number;
-    color?: string; // Optional color prop
+    color?: string;
 }
 
 const ProgressRing: React.FC<ProgressRingProps> = ({ progress, color = "#A0AEC0" }) => {
@@ -20,9 +20,9 @@ const ProgressRing: React.FC<ProgressRingProps> = ({ progress, color = "#A0AEC0"
                     cx="50"
                     cy="50"
                     r={radius}
-                    style={{ 
-                        strokeDashoffset, 
-                        stroke: color // Apply dynamic color 
+                    style={{
+                        strokeDashoffset,
+                        stroke: color
                     }}
                 ></circle>
             </svg>

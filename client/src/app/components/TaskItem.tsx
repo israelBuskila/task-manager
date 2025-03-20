@@ -8,7 +8,7 @@ import RenderIcon from "./RenderIcon";
 import { CATEGORY_OPTIONS } from "../constants/categoryOptions";
 import { useSetAtom } from "jotai";
 import { deleteTaskAtom, updateTaskAtom } from "../data/state";
-import { Icons } from "../constants/icon";
+import { Icons } from "./Icons";
 import Typography from "./Typography";
 
 interface TaskItemProps {
@@ -19,7 +19,6 @@ const TaskItem: React.FC<TaskItemProps> = ({ task }) => {
   const navigate = useNavigate();
   const update = useSetAtom(updateTaskAtom);
   const removeTask = useSetAtom(deleteTaskAtom)
-
 
   const handleToggleComplete = () => {
     update({ ...task, completed: !task.completed });
@@ -36,8 +35,6 @@ const TaskItem: React.FC<TaskItemProps> = ({ task }) => {
     return progress;
   };
 
-
-
   return (
     <div className="hover">
       <div className="task">
@@ -45,10 +42,10 @@ const TaskItem: React.FC<TaskItemProps> = ({ task }) => {
           <Checkbox checked={task.completed} onChange={handleToggleComplete} />
 
           <RenderIcon iconName={task.category} className="category-icon" backgroundColor={CATEGORY_OPTIONS[task.category].backgroundColor} />
-<div className="info">
-<Typography variant="medium">{task.category}</Typography>
-<Typography variant="small">{task.title}</Typography>
-</div>
+          <div className="info">
+            <Typography variant="medium">{task.category}</Typography>
+            <Typography variant="small">{task.title}</Typography>
+          </div>
 
         </div>
         <ProgressRing progress={calcProgress()} color={CATEGORY_OPTIONS[task.category].color} />

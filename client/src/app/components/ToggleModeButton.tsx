@@ -7,7 +7,7 @@ const ToggleModeButton: React.FC = () => {
 
     return (
         <button className="toggle-mode" onClick={toggleTheme}>
-            <RenderIcon className="sun" iconName="sun"/>
+            <RenderIcon className="sun" iconName="sun" />
             <RenderIcon className="moon" iconName="moon" />
         </button>
     );

@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/Header.css'
 import ToggleModeButton from './ToggleModeButton';
-import { Icons } from '../constants/icon';
+import { Icons } from './Icons';
 
 
 const Header: React.FC = () => {
