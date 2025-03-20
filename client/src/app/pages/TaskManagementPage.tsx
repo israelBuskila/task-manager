@@ -10,8 +10,10 @@ import CTAButton from "../components/CTAButton";
 import "../styles/TaskManagementPage.css";
 import SubTaskItem from "../components/SubTaskItem";
 import Typography from "../components/Typography";
+import usePageVisit from "../hooks/usePageVisit";
 
 const TaskManagementPage = () => {
+  usePageVisit("Task Management Page")
   const { id } = useParams();
   const navigate = useNavigate();
 
